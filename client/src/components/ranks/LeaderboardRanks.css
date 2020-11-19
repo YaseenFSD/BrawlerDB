@@ -1,0 +1,41 @@
+:root {
+    --main-content-width: 700px;
+}
+
+button.nav-page-button {
+    width: 100px;
+    height: 50px;
+    font-size: large;
+}
+
+button:disabled {
+    color: grey;
+}
+
+.nav-page, .nav-page-bottom {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    width: var(--main-content-width);
+    margin: 0 auto;
+}
+
+.page-num {
+    flex-grow: 1;
+    font-size: 26px;
+}
+
+.nav-page-buttons-and-num {
+    margin: 10px auto;
+}
+
+
+th {
+    text-align: left;
+}
+
+table {
+    width: var(--main-content-width);
+    margin: 10px auto;
+    border: 1px solid cyan;
+}

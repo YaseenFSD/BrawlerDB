@@ -1,0 +1,20 @@
+:root {
+    background-color: #262626;
+    color: white;
+}
+
+button {
+    margin: 5px;
+    background: transparent;
+    border-radius: 45%;
+    border: 0.8px solid cyan;
+    color: cyan;
+}
+
+button:focus {
+    outline: 0;
+}
+
+button:hover {
+    cursor: pointer;
+}
