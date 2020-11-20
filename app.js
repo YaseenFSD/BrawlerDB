@@ -2,6 +2,8 @@ import { test } from "./helpers"
 import express from "express"
 import axios from "axios"
 import cors from "cors"
+import path from "path"
+
 const port = process.env.PORT || 3000
 const app = express()
 app.use(express.json())
@@ -19,6 +21,13 @@ app.get("/api/rankings/:brackets/:region/:page", async (req, res) => {
         res.send(error)
     }
 })
+
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static('client/build'))
+    app.get("*", (req, res) => {
+        res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
+    })
+}
 
 
 app.listen(port, () => {
