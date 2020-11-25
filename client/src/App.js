@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { ReactQueryDevtools } from "react-query-devtools"
-import { LeaderboardRanks } from "./components"
+import { LeaderboardRanks } from "./pages"
 import './App.css';
 import axios from "axios";
 

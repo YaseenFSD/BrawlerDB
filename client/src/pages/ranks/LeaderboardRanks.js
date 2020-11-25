@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import { cleanString } from "../../helpers"
 import "./LeaderboardRanks.css";
 import PrevAndNext from "./PrevAndNext"
-import { LeaderboardTable } from "../leaderboad-table"
+import { LeaderboardTable } from "../../components/leaderboad-table"
 
 
 
