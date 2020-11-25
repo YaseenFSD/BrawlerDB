@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import { cleanString } from "../../helpers"
 import "./LeaderboardRanks.css";
 import PrevAndNext from "./PrevAndNext"
+import { LeaderboardTable } from "../leaderboad-table"
 
 
 
@@ -13,7 +14,6 @@ export const LeaderboardRanks = () => {
     const [region, setRegion] = useState("all")
     const [players, setPlayers] = useState([])
     const { isLoading, isError, data, error, isFetching } = usePaginatedQuery(["ranks", brackets, region, page], getRanks)
-    // Todo make an onSuccess instead of useEffect
     useEffect(() => {
         if (data) {
             setPlayers(data.data)
@@ -50,42 +50,7 @@ export const LeaderboardRanks = () => {
 
         </div>
 
-
-            <table>
-
-                <tbody >
-                    {/* <li>rank: 1 player: DekonTheCreator Current Elo: 4000 </li> */}
-                    {/* //Todo make a player component */}
-                    <tr>
-                        <th>Rank
-                </th>
-                        <th>
-                            Name
-                </th>
-                        <th>
-                            Rating
-                </th>
-                        {/* </tr>
-                {page === 1 ? <>
-                    <td>1</td>
-                    <td>DekonTheCreator</td>
-                    <td>4000</td> </> : null}
-                <tr> */}
-
-
-
-                    </tr>
-                    {/* //Todo: Have the id be passed into a onClick function on the playername  */}
-                    {players.map((player) => {
-                        // console.log(typeof player.rank)
-                        return <tr key={player.brawlhalla_id}>
-                            <td>{player.rank}</td>
-                            <td>{cleanString(player.name)}</td>
-                            <td>{player.rating}</td>
-                        </tr>
-                    })}
-                </tbody>
-            </table>
+        <LeaderboardTable players={players}/>
 
 
         <div className="nav-page-bottom">
