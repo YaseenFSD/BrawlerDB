@@ -3,7 +3,7 @@ import { usePaginatedQuery, useQuery } from "react-query"
 import { useEffect, useRef, useState } from "react"
 import { cleanString } from "../../helpers"
 import "./LeaderboardRanks.css";
-import PrevAndNext from "./PrevAndNext"
+import PrevAndNext from "../../components/prev-and-next/PrevAndNext"
 import { LeaderboardTable } from "../../components/leaderboad-table"
 
 
