@@ -1,6 +1,6 @@
 import { getRanks } from "../../api"
 import { usePaginatedQuery, useQuery } from "react-query"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { cleanString } from "../../helpers"
 import "./LeaderboardRanks.css";
 import PrevAndNext from "./PrevAndNext"
@@ -51,21 +51,21 @@ export const LeaderboardRanks = () => {
         </div>
 
 
-        <table>
+            <table>
 
-            <tbody>
-                {/* <li>rank: 1 player: DekonTheCreator Current Elo: 4000 </li> */}
-                {/* //Todo make a player component */}
-                <tr>
-                    <th>Rank
+                <tbody >
+                    {/* <li>rank: 1 player: DekonTheCreator Current Elo: 4000 </li> */}
+                    {/* //Todo make a player component */}
+                    <tr>
+                        <th>Rank
                 </th>
-                    <th>
-                        Name
+                        <th>
+                            Name
                 </th>
-                    <th>
-                        Rating
+                        <th>
+                            Rating
                 </th>
-                {/* </tr>
+                        {/* </tr>
                 {page === 1 ? <>
                     <td>1</td>
                     <td>DekonTheCreator</td>
@@ -74,18 +74,18 @@ export const LeaderboardRanks = () => {
 
 
 
-                </tr>
-                {/* //Todo: Have the id be passed into a onClick function on the playername  */}
-                {players.map((player) => {
-                    // console.log(typeof player.rank)
-                    return <tr key={player.brawlhalla_id}>
-                        <td>{player.rank}</td>
-                        <td>{cleanString(player.name)}</td> 
-                        <td>{player.rating}</td>
                     </tr>
-                })}
-            </tbody>
-        </table>
+                    {/* //Todo: Have the id be passed into a onClick function on the playername  */}
+                    {players.map((player) => {
+                        // console.log(typeof player.rank)
+                        return <tr key={player.brawlhalla_id}>
+                            <td>{player.rank}</td>
+                            <td>{cleanString(player.name)}</td>
+                            <td>{player.rating}</td>
+                        </tr>
+                    })}
+                </tbody>
+            </table>
 
 
         <div className="nav-page-bottom">
