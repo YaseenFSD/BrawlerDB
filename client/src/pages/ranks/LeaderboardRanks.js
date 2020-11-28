@@ -40,7 +40,7 @@ export const LeaderboardRanks = () => {
     }
 
     //Todo use a loading component where necessary
-    return (<div>
+    return (<div className="LeaderboardRanks">
         <div className="nav-page">
             <div className="nav-page-buttons-and-num">
                 <div className="page-num"> Page:{page} </div>
