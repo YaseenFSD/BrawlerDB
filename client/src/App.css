@@ -1,6 +1,11 @@
 :root {
     background-color: #262626;
     color: white;
+    background-size: 1000px 1500px;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-image: url("./background.png");
+    background-color: black;
 }
 
 button {

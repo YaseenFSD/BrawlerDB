@@ -38,5 +38,5 @@ table {
     width: var(--main-content-width);
     margin: 10px auto;
     border: 1px solid cyan;
-    background: linear-gradient(0deg, rgba(38, 38, 38, 1) 0%, rgba(9, 115, 121, 0.39) 27%, rgba(0, 212, 255, .4) 57%);
-}
+    background: linear-gradient(0deg, rgba(38,38,38,1) 0%, rgba(48,9,121,0.89539565826330536) 42%, rgba(0,212,255,0.80940126050420167) 85%);
+}    
