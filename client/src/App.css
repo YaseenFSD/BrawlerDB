@@ -1,12 +1,19 @@
 :root {
+    --page-width: 1300px;
     background-color: #262626;
     color: white;
-    background-size: 1300px 1700px;
+    width: var(--page-width);
+    margin: 0 auto;
+    background-size: var(--page-width) 1700px;
     background-repeat: no-repeat;
     background-position-x: center;
     background-image: url("./background.png");
     background-color: black;
 }
+
+/* div.App {
+    width: 1300px;
+} */
 
 button {
     margin: 5px;

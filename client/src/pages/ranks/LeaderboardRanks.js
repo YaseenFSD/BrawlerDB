@@ -21,10 +21,10 @@ export const LeaderboardRanks = () => {
     }, [data])
 
     if (isError) {
-        return <span>Error: {error.message}</span>
+        return <div className="error-message">Error: {error.message}</div>
     }
     if (isLoading) {
-        return <div>Loading...</div>
+        return <div className="loading-message">Loading...</div>
     }
 
     const nextPage = () => {
