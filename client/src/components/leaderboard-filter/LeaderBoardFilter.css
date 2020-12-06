@@ -1,0 +1,21 @@
+div.LeaderBoardFilter {
+    width: var(--main-content-width);
+    margin: 0 auto;
+    text-align: center;
+    border: 1px solid cyan;
+}
+
+.filter-button {
+    display: inline-block;
+    text-decoration: underline;
+    margin: 5px 10px;
+    padding: 10px;
+}
+
+.filter-button:hover {
+    cursor: pointer;
+}
+
+.current-filter {
+    border: 0.5px solid cyan;
+}

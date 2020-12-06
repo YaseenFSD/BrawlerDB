@@ -1,24 +1,18 @@
 import { getRanks } from "../../api"
-import { usePaginatedQuery, useQuery } from "react-query"
-import { useEffect, useRef, useState } from "react"
-import { cleanString } from "../../helpers"
-import "./LeaderboardRanks.css";
+import { usePaginatedQuery } from "react-query"
+import { useState } from "react"
 import PrevAndNext from "../../components/prev-and-next/PrevAndNext"
 import { LeaderboardTable } from "../../components/leaderboad-table"
+import { LeaderBoardFilter } from "../../components"
+import "./LeaderboardRanks.css";
 
 
 
 export const LeaderboardRanks = () => {
-    const [page, setPage] = useState(50803)
+    const [page, setPage] = useState(1)
     const [brackets, setBrackets] = useState("1v1")
     const [region, setRegion] = useState("all")
-    const [players, setPlayers] = useState([])
     const { isLoading, isError, data, error, isFetching } = usePaginatedQuery(["ranks", brackets, region, page], getRanks)
-    // useEffect(() => {
-    //     if (data) {
-    //         setPlayers(data.data)
-    //     }
-    // }, [data])
 
     if (isError) {
         return <div className="error-message">Error: {error.message}</div>
@@ -45,12 +39,12 @@ export const LeaderboardRanks = () => {
             <div className="nav-page-buttons-and-num">
                 <div className="page-num"> Page:{page} </div>
                 <PrevAndNext nextPage={nextPage} prevPage={prevPage} page={page} />
-                {isFetching ? <div style={{ position: "absolute" }}> Fetching...</div> : null}
+                {isFetching ? <div> Fetching...</div> : <div style={{height: "1.2em"}}></div>}
             </div>
-
         </div>
+        <LeaderBoardFilter region={region} setRegion={setRegion} brackets={brackets} setBrackets={setBrackets}/>
 
-        <LeaderboardTable players={data.data}/>
+        <LeaderboardTable brackets={brackets} players={data.data} />
 
 
         <div className="nav-page-bottom">
