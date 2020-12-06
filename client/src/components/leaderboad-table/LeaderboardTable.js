@@ -1,6 +1,12 @@
 import { cleanString } from "../../helpers"
 
 export const LeaderboardTable = ({ players }) => {
+    if (players.length === 0) {
+        return <div className= "no-players-message">
+            There are no players on this page
+
+        </div>
+    }
     return (<table>
 
         <tbody >
@@ -28,6 +34,7 @@ export const LeaderboardTable = ({ players }) => {
             </th>
             </tr>
             {/* //Todo: Have the id be passed into a onClick function on the playername  */}
+            {console.log(players.length !== 0)}
             {players.map((player) => {
                 return <tr key={player.brawlhalla_id} playerId={player.brawlhalla_id}>
                     <td>{player.rank}</td>

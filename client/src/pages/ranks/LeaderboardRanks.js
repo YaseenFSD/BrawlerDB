@@ -9,16 +9,16 @@ import { LeaderboardTable } from "../../components/leaderboad-table"
 
 
 export const LeaderboardRanks = () => {
-    const [page, setPage] = useState(1)
+    const [page, setPage] = useState(50803)
     const [brackets, setBrackets] = useState("1v1")
     const [region, setRegion] = useState("all")
     const [players, setPlayers] = useState([])
     const { isLoading, isError, data, error, isFetching } = usePaginatedQuery(["ranks", brackets, region, page], getRanks)
-    useEffect(() => {
-        if (data) {
-            setPlayers(data.data)
-        }
-    }, [data])
+    // useEffect(() => {
+    //     if (data) {
+    //         setPlayers(data.data)
+    //     }
+    // }, [data])
 
     if (isError) {
         return <div className="error-message">Error: {error.message}</div>
@@ -50,7 +50,7 @@ export const LeaderboardRanks = () => {
 
         </div>
 
-        <LeaderboardTable players={players}/>
+        <LeaderboardTable players={data.data}/>
 
 
         <div className="nav-page-bottom">
