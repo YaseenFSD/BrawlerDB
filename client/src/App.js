@@ -1,15 +1,16 @@
 import { useEffect } from "react"
 import { ReactQueryDevtools } from "react-query-devtools"
-import { LeaderboardRanks } from "./pages"
+// import { LeaderboardRanks } from "./pages"
 import './App.css';
-import axios from "axios";
-
+import { Routes } from "./Routes"
 
 function App() {
   return (<>
     {/* <h1 style={{textAlign: "center"}}>This website is currently in production</h1> */}
+
     <div className="App">
-      <LeaderboardRanks />
+      <Routes/>
+      {/* <LeaderboardRanks /> */}
     </div>
     {/* <ReactQueryDevtools /> */}
   </>
