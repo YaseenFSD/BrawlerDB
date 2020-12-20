@@ -1,5 +1,4 @@
-import { useEffect } from "react"
-import { ReactQueryDevtools } from "react-query-devtools"
+// import { ReactQueryDevtools } from "react-query-devtools"
 // import { LeaderboardRanks } from "./pages"
 import './App.css';
 import { Routes } from "./Routes"

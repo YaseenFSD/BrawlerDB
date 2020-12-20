@@ -8,7 +8,7 @@ export const LeaderBoardFilter = ({region, brackets, page}) => {
         history.replace(`/${brackets}/${newRegion}/${page}`)
     }
     const setBrackets = (newBrackets) => {
-        history.replace(`/${newBrackets}/${region}/${page}`)
+            history.replace(`/${newBrackets}/${region}/${page}`)
     }
 
 
@@ -25,7 +25,6 @@ export const LeaderBoardFilter = ({region, brackets, page}) => {
         </div>
         <div className="bracket-filter">
             <span onClick={() => setBrackets("1v1")} className={`bracket filter-button ${brackets === "1v1" ? "current-filter": ""}`}>1v1</span>
-            {/* //Todo for the 2v2 leaderboard: fetch for the specific names from the ID's if more than 1 plus is in the team name. If there is only one, then split the teamname */}
             <span onClick={() => setBrackets("2v2")} className={`bracket filter-button ${brackets === "2v2" ? "current-filter": ""}`}>2v2</span>
 
         </div>
