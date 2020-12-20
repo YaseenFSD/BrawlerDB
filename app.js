@@ -10,14 +10,24 @@ app.use(express.json())
 app.use(cors())
 
 const axiosInstance = axios.create({
-    baseURL: "https://api.brawlhalla.com/"
+    baseURL: "https://api.brawlhalla.com"
 })
 
 app.get("/api/rankings/:brackets/:region/:page", async (req, res) => {
     try {
-        const data = await axios.get(`https://api.brawlhalla.com/rankings/${req.params.brackets}/${req.params.region}/${req.params.page}?api_key=${process.env.API_KEY}`)
+        const data = await axiosInstance.get(`/rankings/${req.params.brackets}/${req.params.region}/${req.params.page}?api_key=${process.env.API_KEY}`)
         res.send(data.data)
     } catch (error) {
+        res.send(error)
+    }
+})
+
+app.get("/api/name/:id", async (req, res) => {
+    try {
+        const data = await axiosInstance.get(`/player/${req.params.id}/ranked?api_key=${process.env.API_KEY}`)
+        res.send(data.data.name)
+    }
+    catch (error) {
         res.send(error)
     }
 })

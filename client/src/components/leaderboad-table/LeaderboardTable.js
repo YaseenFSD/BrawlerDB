@@ -1,21 +1,31 @@
 import { cleanString } from "../../helpers"
 
 export const LeaderboardTable = ({players, brackets}) => {
+    const splitTeamNames = (teamname) => {
+        // let players = teamname.split("+")
+        // if (players.length === 2) {
+        //     return players
+        // } else {
+
+        // }
+    }
+    
     if (players.length === 0) {
         return <div className="no-players-message">
             There are no players on this page
 
         </div>
     }
-    // if (brackets === "2v2") {
-    //     return (
-    //         <tr>
-    //             <th>Rank</th> <th>Region</th> <th>Team</th> <th></th>
-    //         </tr>
-    //     )
-    // }
+    
+    if (brackets === "2v2") {
+        {console.log(players)}
+        return (
+            <tr>
+                <th>Rank</th> <th>Region</th> <th>Player One</th> <th>Player Two</th>
+            </tr>
+        )
+    }
     return (<table>
-        {/* {console.log(players)} */}
         <tbody >
             {/* //Todo make a player component */}
             <tr>
