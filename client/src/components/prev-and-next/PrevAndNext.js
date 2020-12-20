@@ -1,7 +1,16 @@
 import React from "react"
+import {useHistory} from "react-router-dom"
 
-
-const PrevAndNext = ({ prevPage, nextPage, page }) => {
+const PrevAndNext = ({ page }) => {
+    const history = useHistory()
+    
+    const nextPage = () => {
+        history.replace(`${Number(page) + 1}`)
+     }
+ 
+     const prevPage = () => {
+        history.replace(`${Number(page) - 1}`)
+     }
     console.log(page)
     return (<div className="nav-page-buttons-container">
         <button disabled={page === "1"} className={`prev-page nav-page-button`} onClick={prevPage}>Previous</button>

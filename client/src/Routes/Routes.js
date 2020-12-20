@@ -13,9 +13,6 @@ export const Routes = () => {
 
         <Route path="*">
             <Redirect to="/1v1/all/1" />
-            <div>
-                hello
-</div>
         </Route>
         </Switch>
 

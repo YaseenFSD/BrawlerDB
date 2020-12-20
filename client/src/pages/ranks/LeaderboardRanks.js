@@ -15,15 +15,7 @@ export const LeaderboardRanks = ({match:{params}}) => {
     // const [brackets, setBrackets] = useState("1v1")
     // const [region, setRegion] = useState("all")
     const { isLoading, isError, data, error, isFetching } = usePaginatedQuery(["ranks", brackets, region, page], getRanks)
-    const history = useHistory()
-    // console.log(page)
-    const nextPage = () => {
-       history.replace(`${Number(page) + 1}`)
-    }
-
-    const prevPage = () => {
-       history.replace(`${Number(page) - 1}`)
-    }
+    
     if (isError) {
         return <div className="error-message">Error: {error.message}</div>
     }
@@ -35,21 +27,20 @@ export const LeaderboardRanks = ({match:{params}}) => {
          <div className="nav-page">
              <div className="nav-page-buttons-and-num">
                  <div className="page-num"> Page:{page} </div>
-                 <PrevAndNext nextPage={nextPage} prevPage={prevPage} page={page} />
+                 <PrevAndNext page={page} />
                  {isFetching ? <div> Fetching...</div> : <div style={{ height: "1.2em" }}></div>}
              </div>
          </div>
 
-         {/* <LeaderBoardFilter region={region} setRegion={setRegion} brackets={brackets} setBrackets={setBrackets} /> */}
+         <LeaderBoardFilter region={region} brackets={brackets} page={page} />
 
-         {/* <Route path="/" render={(brackets, data) => <LeaderboardTable brackets={brackets}></LeaderboardTable>}/> */}
          <LeaderboardTable brackets={brackets} players={data.data} />
 
 
          <div className="nav-page-bottom">
              <div className="nav-page-buttons-and-num">
 
-                 <PrevAndNext nextPage={nextPage} prevPage={prevPage} page={page} />
+                 <PrevAndNext page={page} />
                  <div className="page-num"> Page:{page} </div>
              </div>
 
