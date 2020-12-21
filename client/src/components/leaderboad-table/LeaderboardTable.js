@@ -7,7 +7,6 @@ export const LeaderboardTable = ({ players, brackets}) => {
             return <div className="loading-message">Loading...</div>
         }
         return (<table>
-            {console.log(players)}
             <tbody>
 
 
