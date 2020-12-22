@@ -15,7 +15,6 @@ const axiosInstance = axios.create({
 
 app.get("/api/rankings/:brackets/:region/:page?", async (req, res) => {
     try {
-        // console.log(req.query)
         let data
         if (req.query.name){
             data = await axiosInstance.get(`/rankings/${req.params.brackets}/${req.params.region}/${req.params.page}?name=${req.query.name}&api_key=${process.env.API_KEY}`)
@@ -53,12 +52,6 @@ app.get("/api/rankings/:brackets/:region/:page?", async (req, res) => {
     }
 })
 
-// app.get("/api/rankings/1v1/:region/:page?", async (req, res) => {
-//     console.log(req.query)
-//     const data = await axiosInstance.get(`/rankings/1v1/${req.params.region}/${req.params.page}?name=${req.query.name}&api_key=${process.env.API_KEY}`)
-//     console.log(data)
-//     res.send(data)
-// })
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static('client/build'))

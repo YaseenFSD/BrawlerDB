@@ -4,7 +4,7 @@ import { usePaginatedQuery } from "react-query"
 import PrevAndNext from "../../components/prev-and-next/PrevAndNext"
 import { LeaderboardTable } from "../../components/leaderboad-table"
 import { LeaderBoardFilter } from "../../components"
-import { useHistory} from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import "./LeaderboardRanks.css";
 
 
@@ -21,7 +21,7 @@ export const LeaderboardRanks = ({ match: { params }, location: { search: urlQue
         history.replace(`/1v1/${region}/1?name=${search.replace(" ", "+")}`)
         setSearch("")
         searchInput.current.value = ""
-        // console.log(search, searchInput.current.value)
+        // searchInput.current.blur()
     }
 
     const resetSearch = (e) => {
@@ -39,13 +39,14 @@ export const LeaderboardRanks = ({ match: { params }, location: { search: urlQue
         <div className="nav-page">
             <div className="nav-page-buttons-and-num">
                 <div className="page-num"> Page:{page} </div>
-                <PrevAndNext page={page} searchName={searchName}/>
+                <PrevAndNext page={page} searchName={searchName} />
                 {isFetching ? <div> Fetching...</div> : <div style={{ height: "1.2em" }}></div>}
             </div>
-            {brackets !== "2v2" ? <form onSubmit={handleSearchPlayer}>
-                <input ref={searchInput} onChange={(e) => setSearch(e.target.value)} placeholder="Search player" className="search-bar"></input>
-                {urlQuery ? <button onClick={resetSearch}>Back</button> : null}
-            </form> : <span className="search-bar">Searching is currently unavailable for 2v2</span>
+            {brackets !== "2v2" ? <>
+                {urlQuery ? <button className="back-btn" onClick={resetSearch} >Back</button> : null}
+                <form onSubmit={handleSearchPlayer}>
+                    <input ref={searchInput} onChange={(e) => setSearch(e.target.value)} placeholder="Search player" className="search-bar"></input>
+                </form> </> : <span className="search-bar">Searching is currently unavailable for 2v2</span>
             }
         </div>
 
