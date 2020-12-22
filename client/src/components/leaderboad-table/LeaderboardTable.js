@@ -1,6 +1,6 @@
 import { cleanString } from "../../helpers"
 
-export const LeaderboardTable = ({ players, brackets, page }) => {
+export const LeaderboardTable = ({ players, brackets }) => {
 
     if (brackets === "2v2") {
         if (!players[0].player_one) {

@@ -1,14 +1,22 @@
 import "./LeaderBoardFilter.css"
 import {useHistory} from "react-router-dom"
 
-export const LeaderBoardFilter = ({region, brackets, page}) => {
+export const LeaderBoardFilter = ({region, brackets, page, searchName}) => {
     const history = useHistory()
     
     const setRegion = (newRegion) => {
-        history.replace(`/${brackets}/${newRegion}/${page}`)
+        if (searchName) {
+            history.replace(`/${brackets}/${newRegion}/${page}?name=${searchName}`)
+        } else {
+            history.replace(`/${brackets}/${newRegion}/${page}`)
+        }
     }
     const setBrackets = (newBrackets) => {
+        if (searchName) {
+            history.replace(`/${newBrackets}/${region}/${page}?name=${searchName}`)
+        } else {
             history.replace(`/${newBrackets}/${region}/${page}`)
+        }
     }
 
 

@@ -5,7 +5,12 @@ import axios from "axios"
 //     baseURL: `http://localhost:5000`
 // })
 
-export const getRanks = async (key, brackets, region, page) => {
-    const ranks = await axios.get(`/api/rankings/${brackets}/${region}/${page}`)
+export const getRanks = async (key, brackets, region, page, name) => {
+    let ranks
+    if (name) {
+        ranks = await axios.get(`/api/rankings/${brackets}/${region}/${page}?name=${name}`)
+    } else {
+        ranks = await axios.get(`/api/rankings/${brackets}/${region}/${page}`)
+    }
     return ranks
 }

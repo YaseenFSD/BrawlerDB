@@ -1,21 +1,31 @@
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { getRanks } from "../../api"
 import { usePaginatedQuery } from "react-query"
 import PrevAndNext from "../../components/prev-and-next/PrevAndNext"
 import { LeaderboardTable } from "../../components/leaderboad-table"
 import { LeaderBoardFilter } from "../../components"
+import { useHistory} from "react-router-dom"
 import "./LeaderboardRanks.css";
 
 
 
-export const LeaderboardRanks = ({ match: { params } }) => {
+export const LeaderboardRanks = ({ match: { params }, location: { search: urlQuery } }) => {
     const [search, setSearch] = useState("")
+    const searchInput = useRef(null)
+    const searchName = urlQuery.replace("?name=", "")
     const { brackets, region, page } = params
-    const { isLoading, isError, data, error, isFetching } = usePaginatedQuery(["ranks", brackets, region, page], getRanks)
-
+    const { isLoading, isError, data, error, isFetching } = usePaginatedQuery(["ranks", brackets, region, page, searchName], getRanks)
+    const history = useHistory()
     const handleSearchPlayer = (e) => {
         e.preventDefault()
-        // Todo use api call here to search player
+        history.replace(`/1v1/${region}/1?name=${search.replace(" ", "+")}`)
+        setSearch("")
+        searchInput.current.value = ""
+        // console.log(search, searchInput.current.value)
+    }
+
+    const resetSearch = (e) => {
+        history.replace(`/1v1/${region}/1`)
     }
 
     if (isError) {
@@ -29,15 +39,17 @@ export const LeaderboardRanks = ({ match: { params } }) => {
         <div className="nav-page">
             <div className="nav-page-buttons-and-num">
                 <div className="page-num"> Page:{page} </div>
-                <PrevAndNext page={page} />
+                <PrevAndNext page={page} searchName={searchName}/>
                 {isFetching ? <div> Fetching...</div> : <div style={{ height: "1.2em" }}></div>}
             </div>
-            <form onSubmit={handleSearchPlayer}>
-                <input onChange={(e) => setSearch(e.target.value)} placeholder="Search player" className="search-bar"></input>
-            </form>
+            {brackets !== "2v2" ? <form onSubmit={handleSearchPlayer}>
+                <input ref={searchInput} onChange={(e) => setSearch(e.target.value)} placeholder="Search player" className="search-bar"></input>
+                {urlQuery ? <button onClick={resetSearch}>Back</button> : null}
+            </form> : <span className="search-bar">Searching is currently unavailable for 2v2</span>
+            }
         </div>
 
-        <LeaderBoardFilter region={region} brackets={brackets} page={page} />
+        <LeaderBoardFilter region={region} brackets={brackets} page={page} searchName={searchName} />
 
         <LeaderboardTable brackets={brackets} players={data.data} page={page} />
 
@@ -45,7 +57,7 @@ export const LeaderboardRanks = ({ match: { params } }) => {
         <div className="nav-page-bottom">
             <div className="nav-page-buttons-and-num">
 
-                <PrevAndNext page={page} />
+                <PrevAndNext page={page} searchName={searchName} />
                 <div className="page-num"> Page:{page} </div>
             </div>
 

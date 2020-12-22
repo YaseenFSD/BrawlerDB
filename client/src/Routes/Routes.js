@@ -6,7 +6,7 @@ export const Routes = () => {
     return (<BrowserRouter>
         <Switch>
 
-            <Route path="/:brackets/:region/:page" render={(props) => <LeaderboardRanks {...props} />} />
+            <Route path="/:brackets/:region/:page?" render={(props) => <LeaderboardRanks {...props} />} />
             {/* <Route path="*">
             <Redirect to="/1v1/all/1"/>
         </Route> */}
