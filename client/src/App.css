@@ -30,3 +30,16 @@ button:focus {
 button:hover {
     cursor: pointer;
 }
+
+hr {
+    border:0.1px solid cyan;
+    width: 100%;
+}
+
+footer {
+    text-align: center;
+}
+
+/* .twitter-icon {
+
+} */
