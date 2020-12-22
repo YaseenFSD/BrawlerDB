@@ -28,7 +28,7 @@ export const LeaderboardRanks = ({match:{params}}) => {
 
          <LeaderBoardFilter region={region} brackets={brackets} page={page} />
 
-         <LeaderboardTable brackets={brackets} players={data.data} />
+         <LeaderboardTable brackets={brackets} players={data.data} page={page} />
 
 
          <div className="nav-page-bottom">
