@@ -36,30 +36,10 @@ export const LeaderboardTable = ({ players, brackets, page }) => {
             <tr>
                 <th>Rank</th><th>Region</th><th>Name</th><th>Rating</th><th>Tier</th><th>W-L</th><th>Win %</th>
             </tr>
-            {page === "1" ? <><tr>
-                    <td style={{color:"yellow"}}>1</td>
-                    <td style={{color:"yellow"}}>US-E</td>
-                    <td style={{color:"yellow"}}>DekonTheCreator</td>
-                    <td style={{color:"yellow"}}>4000</td>
-                    <td style={{color:"yellow"}}>God Tier</td>
-                    <td style={{color:"yellow"}}>9000-0</td>
-                    <td style={{color:"yellow"}}>100%</td>
-                </tr>
-
-<tr>
-                    <td style={{color:"yellow"}}>2</td>
-                    <td style={{color:"yellow"}}>US-E</td>
-                    <td style={{color:"yellow"}}>Kimber</td>
-                    <td style={{color:"yellow"}}>3999</td>
-                    <td style={{color:"yellow"}}>God Tier</td>
-                    <td style={{color:"yellow"}}>8999-0</td>
-                    <td style={{color:"yellow"}}>100%</td>
-                </tr></>: ""
-        }
             {/* //Todo: Have the id be passed into a onClick function on the playername  */}
             {players.map((player) => {
                 return <tr key={player.brawlhalla_id} playerid={player.brawlhalla_id}>
-                    <td>{player.rank + 2}</td>
+                    <td>{player.rank}</td>
                     <td>{player.region}</td>
                     <td>{cleanString(player.name)}</td>
                     <td>{player.rating}</td>
