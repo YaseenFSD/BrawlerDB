@@ -11,9 +11,9 @@
     background-color: black;
 }
 
-/* div.App {
-    width: 1300px;
-} */
+div.App {
+    height: 2000px;
+}
 
 button {
     margin: 5px;

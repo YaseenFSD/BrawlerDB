@@ -12,11 +12,7 @@ export const LeaderBoardFilter = ({region, brackets, page, searchName}) => {
         }
     }
     const setBrackets = (newBrackets) => {
-        if (searchName) {
-            history.replace(`/${newBrackets}/${region}/${page}?name=${searchName}`)
-        } else {
-            history.replace(`/${newBrackets}/${region}/${page}`)
-        }
+        history.replace(`/${newBrackets}/${region}/${page}`)
     }
 
 

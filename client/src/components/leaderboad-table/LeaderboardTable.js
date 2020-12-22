@@ -6,7 +6,7 @@ export const LeaderboardTable = ({ players, brackets }) => {
         if (!players[0].player_one) {
             return <div className="loading-message">Loading...</div>
         }
-        return (<table>
+        return (<div className="table-div"><table>
             <tbody>
 
 
@@ -28,9 +28,9 @@ export const LeaderboardTable = ({ players, brackets }) => {
                 })}
             </tbody>
         </table>
-        )
+        </div>)
     }
-    return (<table>
+    return (<div className="table-div"><table>
         <tbody >
             {/* //Todo make a player component */}
             <tr>
@@ -49,5 +49,6 @@ export const LeaderboardTable = ({ players, brackets }) => {
                 </tr>
             })}
         </tbody>
-    </table>)
+    </table>
+    </div>)
 }

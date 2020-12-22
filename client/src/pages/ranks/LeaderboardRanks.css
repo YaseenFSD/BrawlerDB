@@ -31,12 +31,18 @@ button:disabled {
     margin: 10px auto;
 }
 
+
+table {
+    width: 100%;
+}
+
 th {
     text-align: left;
 }
 
-table {
+.table-div {    
     width: var(--main-content-width);
+    min-height: 1200px;
     margin: 10px auto;
     border: 1px solid cyan;
     background: linear-gradient(0deg, rgba(38, 38, 38, 1) 0%, rgba(48, 9, 121, 0.89539565826330536) 42%, rgba(0, 212, 255, 0.80940126050420167) 85%);
