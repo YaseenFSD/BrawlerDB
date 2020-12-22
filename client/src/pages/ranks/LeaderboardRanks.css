@@ -14,6 +14,7 @@ button:disabled {
 }
 
 .nav-page, .nav-page-bottom {
+    position: relative;
     display: flex;
     text-align: center;
     justify-content: center;
@@ -38,11 +39,18 @@ table {
     width: var(--main-content-width);
     margin: 10px auto;
     border: 1px solid cyan;
-    background: linear-gradient(0deg, rgba(38,38,38,1) 0%, rgba(48,9,121,0.89539565826330536) 42%, rgba(0,212,255,0.80940126050420167) 85%);
-}    
+    background: linear-gradient(0deg, rgba(38, 38, 38, 1) 0%, rgba(48, 9, 121, 0.89539565826330536) 42%, rgba(0, 212, 255, 0.80940126050420167) 85%);
+}
 
 .error-message, .loading-message, .no-players-message {
     min-width: var(--main-content-width);
     text-align: center;
     font-size: 40px;
+}
+
+.search-bar {
+    height: 20px;
+    position: absolute;
+    bottom: 10px;
+    right: 5px;
 }
