@@ -1,5 +1,5 @@
 div.LeaderboardRanks {
-    --main-content-width: 950px;
+    --main-content-width: 1150px;
     font-size: 20px;
 }
 
@@ -34,6 +34,7 @@ button:disabled {
 
 table {
     width: 100%;
+    border-spacing: 15px;
 }
 
 th {

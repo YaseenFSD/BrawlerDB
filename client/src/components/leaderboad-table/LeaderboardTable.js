@@ -11,7 +11,7 @@ export const LeaderboardTable = ({ players, brackets }) => {
 
 
                 <tr>
-                    <th>Rank</th><th>Region</th><th>Player 1</th><th>Player 2</th><th>Rating</th><th>Tier</th><th>Wins</th><th>Losses</th>
+                    <th>Rank</th><th>Region</th><th>Player 1</th><th>Player 2</th><th>Rating</th><th>Peak</th><th>Tier</th><th>W-L</th>
                 </tr>
                 {players.map((team) => {
                     return <tr key={team.brawlhalla_id_one + team.brawlhalla_id_two}>
@@ -20,9 +20,11 @@ export const LeaderboardTable = ({ players, brackets }) => {
                         <td>{cleanString(team.player_one)}</td>
                         <td>{cleanString(team.player_two)}</td>
                         <td>{team.rating}</td>
+                        <td>{team.peak_rating}</td>
                         <td>{team.tier}</td>
-                        <td>{team.wins}</td>
-                        <td>{team.games - team.wins}</td>
+                        <td>{team.wins}-{team.games - team.wins}</td>
+                        {/* <td>{team.wins}</td>
+                        <td>{team.games - team.wins}</td> */}
 
                     </tr>
                 })}
@@ -30,11 +32,14 @@ export const LeaderboardTable = ({ players, brackets }) => {
         </table>
         </div>)
     }
+    if (brackets === "1v1" && players[0].teamname) {
+    return <div className="loading-message">Loading...</div>
+}
     return (<div className="table-div"><table>
         <tbody >
             {/* //Todo make a player component */}
             <tr>
-                <th>Rank</th><th>Region</th><th>Name</th><th>Rating</th><th>Tier</th><th>W-L</th><th>Win %</th>
+                <th>Rank</th><th>Region</th><th>Name</th><th>Rating</th><th>Peak</th><th>Tier</th><th>W-L</th><th>Win %</th>
             </tr>
             {/* //Todo: Have the id be passed into a onClick function on the playername  */}
             {players.map((player) => {
@@ -43,6 +48,7 @@ export const LeaderboardTable = ({ players, brackets }) => {
                     <td>{player.region}</td>
                     <td>{cleanString(player.name)}</td>
                     <td>{player.rating}</td>
+                    <td>{player.peak_rating}</td>
                     <td>{player.tier}</td>
                     <td>{player.wins}-{player.games - player.wins}</td>
                     <td>{Math.round((player.wins / player.games) * 100)}%</td>
