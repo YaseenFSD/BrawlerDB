@@ -1,11 +1,11 @@
 import { cleanString } from "../../helpers"
 
 export const LeaderboardTable = ({ players, brackets }) => {
+    if (players.length === 0) {
+        return <div className="no-players-message">There are no players on this page</div>
+    }
 
     if (brackets === "2v2") {
-        if (!players[0].player_one) {
-            return <div className="loading-message">Loading...</div>
-        }
         return (<div className="table-div"><table>
             <tbody>
 
@@ -13,7 +13,7 @@ export const LeaderboardTable = ({ players, brackets }) => {
                 <tr>
                     <th>Rank</th><th>Region</th><th>Player 1</th><th>Player 2</th><th>Rating</th><th>Peak</th><th>Tier</th><th>W-L</th>
                 </tr>
-                {players.map((team) => {
+                {!players[0].player_one ? <div>Loading...</div> :players.map((team) => {
                     return <tr key={team.brawlhalla_id_one + team.brawlhalla_id_two}>
                         <td>{team.rank}</td>
                         <td>{team.region}</td>
@@ -23,8 +23,6 @@ export const LeaderboardTable = ({ players, brackets }) => {
                         <td>{team.peak_rating}</td>
                         <td>{team.tier}</td>
                         <td>{team.wins}-{team.games - team.wins}</td>
-                        {/* <td>{team.wins}</td>
-                        <td>{team.games - team.wins}</td> */}
 
                     </tr>
                 })}
@@ -32,9 +30,6 @@ export const LeaderboardTable = ({ players, brackets }) => {
         </table>
         </div>)
     }
-    if (brackets === "1v1" && players[0].teamname) {
-    return <div className="loading-message">Loading...</div>
-}
     return (<div className="table-div"><table>
         <tbody >
             {/* //Todo make a player component */}
@@ -42,7 +37,7 @@ export const LeaderboardTable = ({ players, brackets }) => {
                 <th>Rank</th><th>Region</th><th>Name</th><th>Rating</th><th>Peak</th><th>Tier</th><th>W-L</th><th>Win %</th>
             </tr>
             {/* //Todo: Have the id be passed into a onClick function on the playername  */}
-            {players.map((player) => {
+            {players[0].teamname ? <div>Loading...</div> : players.map((player) => {
                 return <tr key={player.brawlhalla_id} playerid={player.brawlhalla_id}>
                     <td>{player.rank}</td>
                     <td>{player.region}</td>
