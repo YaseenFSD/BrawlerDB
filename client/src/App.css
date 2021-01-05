@@ -18,7 +18,7 @@ div.App {
 button {
     margin: 5px;
     background: transparent;
-    border-radius: 45%;
+    border-radius: 60px;
     border: 0.8px solid cyan;
     color: cyan;
 }
